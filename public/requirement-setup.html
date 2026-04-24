@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Պահանջվող աշխատակիցների կարգավորում</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .matrix-table th,
+    .matrix-table td {
+      border: 1px solid #d1d5db;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .matrix-table input {
+      width: 90px;
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+    }
+
+    .nav-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: #111827;
+      text-decoration: none;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/dashboard.html" class="nav-link">← Վերադառնալ վահանակ</a>
+
+    <h1>Պահանջվող աշխատակիցների քանակի կարգավորում</h1>
+    <p class="subtitle">
+      Նշեք, թե շաբաթվա որ օրը տվյալ հերթափոխի համար քանի աշխատակից է անհրաժեշտ։
+    </p>
+
+    <section class="panel">
+      <div id="requirementMatrixContainer"></div>
+
+      <div class="actions" style="margin-top: 20px;">
+        <button type="button" id="saveRequirementsBtn">Պահպանել պահանջարկի տվյալները</button>
+      </div>
+    </section>
+
+    <div id="requirementStatus" class="status"></div>
+  </div>
+
+  <script src="/requirement-setup.js"></script>
+</body>
+</html>

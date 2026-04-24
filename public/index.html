@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Աշխատակիցների հերթափոխերի պլանավորում</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .intro-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .helper-text {
+      font-size: 14px;
+      color: #6b7280;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .section-note {
+      font-size: 15px;
+      color: #374151;
+      margin-top: 0;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .example-text {
+      font-size: 13px;
+      color: #4b5563;
+      margin-top: 4px;
+    }
+
+    .insight-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 12px;
+    }
+
+    .insight-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .insight-list {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.6;
+    }
+
+    .severity-good {
+      color: #166534;
+      font-weight: 700;
+    }
+
+    .severity-warn {
+      color: #92400e;
+      font-weight: 700;
+    }
+
+    .severity-bad {
+      color: #b91c1c;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div>
+        <h1>Աշխատակիցների հերթափոխերի պլանավորում</h1>
+        <p class="subtitle">Լրացրեք տվյալները, սեղմեք կոճակը, և համակարգը կկազմի շաբաթվա լավագույն գրաֆիկը</p>
+      </div>
+      <div class="topbar-actions">
+        <a href="/dashboard.html" class="link-button secondary-link">Վահանակ</a>
+        <a href="/saved-schedules.html" class="link-button">Իմ աղյուսակները</a>
+      </div>
+    </div>
+
+    <div class="intro-box">
+      <strong>Ինչպե՞ս օգտագործել էջը</strong>
+      <p class="section-note">
+        Այս էջում պետք է ընտրել ժամանակահատվածը, որի համար պետք է կազմվի գրաֆիկը,
+        ապա նշել հաշվարկի պարամետրերը։ Եթե վստահ չեք արժեքների ընտրության հարցում,
+        կարող եք թողնել արդեն լրացված թվերը։
+      </p>
+    </div>
+
+    <form id="schedulerForm" class="panel form-grid">
+      <div class="field">
+        <label for="startDate">Սկսելու ամսաթիվ</label>
+        <input id="startDate" name="startDate" type="date" />
+        <div class="helper-text">
+          Ընտրեք այն օրվանից, որտեղից պետք է սկսվի գրաֆիկի կազմումը։
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="endDate">Ավարտի ամսաթիվ</label>
+        <input id="endDate" name="endDate" type="date" />
+        <div class="helper-text">
+          Ընտրեք այն օրը, մինչև որը պետք է կազմվի գրաֆիկը։
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="scheduleName">Ստեղծվող ժամանակացույցի անվանումը</label>
+        <input
+          id="scheduleName"
+          name="scheduleName"
+          type="text"
+          value="Ժամանակացույց"
+          placeholder="Օրինակ՝ Ապրիլի վերջի գրաֆիկ"
+        />
+        <div class="helper-text">
+          Սա պարզապես անվանում է, որով արդյունքը կարող եք տարբերակել մյուսներից։
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="populationSize">Քանի տարբերակով սկսի համակարգը հաշվարկը</label>
+        <input
+          id="populationSize"
+          name="populationSize"
+          type="number"
+          value="30"
+          min="2"
+        />
+        <div class="helper-text">
+          Որքան մեծ է այս թիվը, այնքան ավելի շատ տարբերակներ է համակարգը սկզբում համեմատում։
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="generations">Քանի փուլով փորձի բարելավել գրաֆիկը</label>
+        <input
+          id="generations"
+          name="generations"
+          type="number"
+          value="50"
+          min="1"
+        />
+        <div class="helper-text">
+          Այս թիվը ցույց է տալիս, թե քանի անգամ համակարգը նորից կփորձի ավելի լավ գրաֆիկ գտնել։
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="mutationRate">Փոփոխությունների ուժգնությունը</label>
+        <input
+          id="mutationRate"
+          name="mutationRate"
+          type="number"
+          step="0.01"
+          value="0.2"
+          min="0"
+          max="1"
+        />
+        <div class="helper-text">
+          Սա որոշում է, թե որքան հաճախ համակարգը փոքր փոփոխություններ անի տարբերակների մեջ։
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="crossoverRate">Տարբերակների իրար խառնելու մակարդակը</label>
+        <input
+          id="crossoverRate"
+          name="crossoverRate"
+          type="number"
+          step="0.01"
+          value="0.8"
+          min="0"
+          max="1"
+        />
+        <div class="helper-text">
+          Սա ցույց է տալիս, թե որքան հաճախ համակարգը երկու լավ տարբերակներից կկազմի նոր տարբերակ։
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="elitismCount">Քանի լավագույն տարբերակ անմիջապես պահել</label>
+        <input
+          id="elitismCount"
+          name="elitismCount"
+          type="number"
+          value="2"
+          min="0"
+        />
+        <div class="helper-text">
+          Լավագույն քանի տարբերակ պետք է առանց փոփոխության անցնի հաջորդ փուլ։
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="tournamentSize">Քանի տարբերակ համեմատել ընտրության պահին</label>
+        <input
+          id="tournamentSize"
+          name="tournamentSize"
+          type="number"
+          value="3"
+          min="1"
+        />
+        <div class="helper-text">
+          Ընտրության փուլում քանի տարբերակ իրար հետ համեմատի համակարգը։
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" id="generateBtn">Կազմել ժամանակացույցը</button>
+      </div>
+    </form>
+
+    <div id="status" class="status"></div>
+
+    <section id="resultActionsSection" class="panel hidden">
+      <h2>Արդյունքի գործողություններ</h2>
+      <p class="section-note">
+        Կարող եք ժամանակացույցը պահպանել ձեր պրոֆիլում, անմիջապես ներբեռնել կամ անցնել պահված աղյուսակների էջ։
+      </p>
+      <div class="inline-actions">
+        <button type="button" id="saveScheduleBtn">Պահպանել պրոֆիլում</button>
+        <button type="button" id="downloadScheduleBtn">Ներբեռնել CSV</button>
+        <a href="/saved-schedules.html" class="link-button secondary-link">Բացել իմ աղյուսակները</a>
+      </div>
+      <div id="resultActionStatus" class="status"></div>
+    </section>
+
+    <section id="summarySection" class="panel hidden">
+      <h2>Ամփոփ արդյունքներ</h2>
+      <p class="section-note">
+        Այստեղ ցուցադրվում են ստացված գրաֆիկի հիմնական գնահատականները։
+      </p>
+      <div id="summaryCards" class="cards"></div>
+    </section>
+
+    <section id="scheduleSection" class="panel hidden">
+      <h2>Կազմված ժամանակացույցը</h2>
+      <p class="section-note">
+        Ստորև բերված աղյուսակում երևում է՝ որ օրը, որ հերթափոխում, որ աշխատակիցներն են նշանակվել։
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Ամսաթիվ</th>
+              <th>Հերթափոխ</th>
+              <th>Նշանակված աշխատակիցներ</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="violationsSection" class="panel hidden">
+      <h2>Վերլուծություն և առաջարկներ</h2>
+      <p class="section-note">
+        Այս բաժնում համակարգը բացատրում է՝ որքանով է հաջողվել կազմել գրաֆիկը և ինչ կարելի է անել այն բարելավելու համար։
+      </p>
+      <div id="violationsOutput"></div>
+    </section>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
+

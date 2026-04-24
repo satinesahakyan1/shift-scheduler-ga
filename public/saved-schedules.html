@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Իմ աղյուսակները</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div>
+        <h1>Իմ աղյուսակները</h1>
+        <p class="subtitle">Այստեղ երևում են ձեր պահպանված ժամանակացույցերը</p>
+      </div>
+      <div class="topbar-actions">
+        <a href="/dashboard.html" class="link-button secondary-link">Վահանակ</a>
+        <a href="/index.html" class="link-button">Նոր գեներացում</a>
+      </div>
+    </div>
+
+    <section class="panel">
+      <h2>Պահպանված ժամանակացույցերի ցանկ</h2>
+      <div id="savedSchedulesStatus" class="status"></div>
+      <div id="savedSchedulesList"></div>
+    </section>
+
+    <section id="scheduleDetailsSection" class="panel hidden">
+      <h2>Ընտրված աղյուսակը</h2>
+      <div id="scheduleDetailsMeta" class="cards"></div>
+
+      <div class="inline-actions" style="margin-top: 18px;">
+        <button type="button" id="downloadSelectedBtn">Ներբեռնել ընտրվածը</button>
+        <button type="button" id="deleteSelectedBtn" class="danger-button">Ջնջել ընտրվածը</button>
+      </div>
+
+      <div class="table-wrap" style="margin-top: 18px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Ամսաթիվ</th>
+              <th>Հերթափոխ</th>
+              <th>Աշխատակիցներ</th>
+            </tr>
+          </thead>
+          <tbody id="savedScheduleTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="/saved-schedules.js"></script>
+</body>
+</html>
+

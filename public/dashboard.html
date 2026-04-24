@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Վահանակ</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div>
+        <h1>Կառավարման վահանակ</h1>
+        <p class="subtitle" id="welcomeText">Բարի գալուստ</p>
+      </div>
+      <div class="topbar-actions">
+        <a href="/saved-schedules.html" class="link-button secondary-link">Իմ աղյուսակները</a>
+        <button id="logoutBtn">Դուրս գալ</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Պրոֆիլ և պահված աղյուսակներ</h2>
+      <p>
+        Այս բաժնից կարող եք անցնել ձեր պահպանված գրաֆիկներին, նորից բացել դրանք, ներբեռնել կամ ջնջել։
+      </p>
+
+      <div class="dashboard-grid" style="margin-top: 16px;">
+        <div class="card">
+          <div class="card-title">Օգտատեր</div>
+          <div class="card-value" id="profileName">-</div>
+          <p class="muted-line" id="profileEmail">-</p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Կազմակերպություն</div>
+          <div class="card-value" id="profileOrganization">-</div>
+          <p class="muted-line">Պահպանված ժամանակացույցերը հասանելի են միայն ձեր պրոֆիլից։</p>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+        <a href="/saved-schedules.html" class="link-button">Բացել իմ աղյուսակները</a>
+        <a href="/index.html" class="link-button secondary-link">Նոր գրաֆիկ գեներացնել</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Աշխատանքի հերթականությունը</h2>
+      <p>
+        Նախ սահմանեք, թե ձեր կազմակերպությունում քանի հերթափոխ կա, հետո նշեք յուրաքանչյուր հերթափոխի համար պահանջվող
+        աշխատակիցների քանակը, ապա ավելացրեք աշխատակիցներին և վերջում գեներացրեք ժամանակացույցը։
+      </p>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+        <a href="/shift-setup.html" class="link-button">Սահմանել հերթափոխերը</a>
+        <a href="/requirement-setup.html" class="link-button">Պահանջվող աշխատակիցների քանակը հերթափոխերում</a>
+        <a href="/employees.html" class="link-button">Իմ աշխատակիցները</a>
+        <a href="/index.html" class="link-button">Գեներացնել ժամանակացույց</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/dashboard.js"></script>
+</body>
+</html>
+

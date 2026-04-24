@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Գրանցում</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container" style="max-width: 600px;">
+    <h1>Գրանցում</h1>
+    <p class="subtitle">Մուտքագրեք տվյալները, և մենք ձեզ կհղենք գաղտնաբառ սահմանելու հղում</p>
+
+    <form id="registerForm" class="panel">
+      <div class="field">
+        <label for="fullName">Անուն ազգանուն</label>
+        <input id="fullName" type="text" required />
+      </div>
+
+      <div class="field">
+        <label for="organizationName">Կազմակերպության անվանում</label>
+        <input id="organizationName" type="text" />
+      </div>
+
+      <div class="field">
+        <label for="email">Էլ․ փոստ</label>
+        <input id="email" type="email" required />
+      </div>
+
+      <div class="actions" style="margin-top: 16px;">
+        <button type="submit" id="registerBtn">Ուղարկել հղումը</button>
+      </div>
+    </form>
+
+    <div id="status" class="status"></div>
+
+    <p style="margin-top: 16px;">
+      Արդեն գաղտնաբառ ունե՞ք։
+      <a href="/login.html">Մուտք գործել</a>
+    </p>
+  </div>
+
+  <script src="/register.js"></script>
+</body>
+</html>

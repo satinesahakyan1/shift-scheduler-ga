@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Հերթափոխերի կարգավորում</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container" style="max-width: 900px;">
+    <a href="/dashboard.html" style="display:inline-block;margin-bottom:16px;font-weight:700;">← Վերադառնալ վահանակ</a>
+
+    <h1>Կազմակերպության հերթափոխերի կարգավորում</h1>
+    <p class="subtitle">
+      Նախ նշեք, թե ձեր կազմակերպությունում քանի հերթափոխ կա, և ինչ անուններով պետք է երևան դրանք։
+    </p>
+
+    <form id="shiftSetupForm" class="panel">
+      <div class="form-grid">
+        <div class="field">
+          <label for="shiftCount">Քանի հերթափոխ ունի ձեր կազմակերպությունը</label>
+          <input id="shiftCount" type="number" min="1" max="10" value="3" />
+        </div>
+      </div>
+
+      <div id="shiftFields" style="margin-top: 20px;"></div>
+
+      <div class="actions" style="margin-top: 20px;">
+        <button type="submit" id="saveShiftSetupBtn">Պահպանել հերթափոխերը</button>
+      </div>
+    </form>
+
+    <div id="shiftStatus" class="status"></div>
+
+    <section class="panel" style="margin-top:24px;">
+      <h2>Ներկա հերթափոխերը</h2>
+      <div id="currentShiftsList"></div>
+    </section>
+  </div>
+
+  <script src="/shift-setup.js"></script>
+</body>
+</html>

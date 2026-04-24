@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Աշխատակիցների կառավարում</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .matrix-table th,
+    .matrix-table td {
+      border: 1px solid #d1d5db;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .section-title {
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    .nav-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: #111827;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+    }
+
+    .employee-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .employee-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .employee-name {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .employee-meta {
+      color: #4b5563;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/dashboard.html" class="nav-link">← Վերադառնալ վահանակ</a>
+
+    <h1>Աշխատակիցների կառավարում</h1>
+    <p class="subtitle">Ավելացրեք ձեր կազմակերպության աշխատակիցներին և սահմանեք նրանց հասանելիությունը</p>
+
+    <form id="employeeForm" class="panel">
+      <div class="form-grid">
+        <div class="field">
+          <label for="fullName">Աշխատակցի անուն ազգանուն</label>
+          <input id="fullName" type="text" required />
+        </div>
+
+        <div class="field">
+          <label for="maxShifts">Մեկ շաբաթում առավելագույն հերթափոխ</label>
+          <input id="maxShifts" type="number" min="0" value="5" required />
+        </div>
+      </div>
+
+      <h2 class="section-title">Հասանելիություն ըստ օրերի և հերթափոխերի</h2>
+      <div id="availabilityContainer"></div>
+
+      <h2 class="section-title">Նախասիրություններ ըստ հերթափոխերի</h2>
+      <div id="preferencesContainer"></div>
+
+      <div class="actions" style="margin-top: 20px;">
+        <button type="submit" id="saveEmployeeBtn">Պահպանել աշխատակցին</button>
+      </div>
+    </form>
+
+    <div id="employeeStatus" class="status"></div>
+    <pre id="employeeResult" class="panel hidden"></pre>
+
+    <section class="panel" style="margin-top: 24px;">
+      <h2>Իմ աշխատակիցները</h2>
+      <div id="myEmployeesList" class="employee-list"></div>
+    </section>
+  </div>
+
+  <script src="/employees.js"></script>
+</body>
+</html>

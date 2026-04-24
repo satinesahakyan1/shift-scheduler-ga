@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Մուտք</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container" style="max-width: 520px;">
+    <h1>Մուտք գործել</h1>
+    <p class="subtitle">Մուտք գործեք ձեր կազմակերպության հաշիվ</p>
+
+    <form id="loginForm" class="panel">
+      <div class="field">
+        <label for="email">Էլ․ փոստ</label>
+        <input id="email" type="email" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Գաղտնաբառ</label>
+        <div class="password-wrapper">
+          <input id="password" type="password" required />
+          <button
+            type="button"
+            id="toggleLoginPassword"
+            class="toggle-password-btn"
+            aria-label="Ցույց տալ գաղտնաբառը"
+            title="Ցույց տալ / թաքցնել գաղտնաբառը"
+          >
+            👁️
+          </button>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top: 16px;">
+        <button type="submit" id="loginBtn">Մուտք գործել</button>
+      </div>
+    </form>
+
+    <div id="status" class="status"></div>
+
+    <p style="margin-top: 16px;">
+      Դեռ հաշիվ չունե՞ք։
+      <a href="/register.html">Գրանցվել</a>
+    </p>
+  </div>
+
+  <script src="/login.js"></script>
+</body>
+</html>
