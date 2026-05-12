@@ -296,6 +296,58 @@ pre {
   margin-bottom: 12px;
 }
 
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 52px;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  min-height: 36px;
+
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--muted);
+
+  font-size: 18px;
+  line-height: 1;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.toggle-password-btn:hover {
+  background: #f3f4f6;
+}
+
+.toggle-password-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
+}
+
+
+
 @media (max-width: 768px) {
   .container {
     padding: 20px 14px 32px;
