@@ -4,6 +4,8 @@ if (!token) {
   window.location.href = '/login.html';
 }
 
+const MAX_SHIFTS_PER_OFFICE = 5;
+
 const shiftCountInput = document.getElementById('shiftCount');
 const shiftFields = document.getElementById('shiftFields');
 const shiftSetupForm = document.getElementById('shiftSetupForm');
@@ -44,6 +46,13 @@ function defaultShiftName(index, count) {
   if (count === 3) {
     if (index === 1) return 'Առավոտյան հերթափոխ';
     if (index === 2) return 'Երեկոյան հերթափոխ';
+    return 'Գիշերային հերթափոխ';
+  }
+
+  if (count === 4) {
+    if (index === 1) return 'Առավոտյան հերթափոխ';
+    if (index === 2) return 'Ցերեկային հերթափոխ';
+    if (index === 3) return 'Երեկոյան հերթափոխ';
     return 'Գիշերային հերթափոխ';
   }
 
@@ -118,7 +127,8 @@ async function loadCurrentShifts() {
 }
 
 shiftCountInput.addEventListener('input', () => {
-  renderShiftFields(Number(shiftCountInput.value));
+  const count = Math.max(1, Number(shiftCountInput.value) || 1);
+  renderShiftFields(count);
 });
 
 shiftSetupForm.addEventListener('submit', async (event) => {
@@ -130,6 +140,17 @@ shiftSetupForm.addEventListener('submit', async (event) => {
   try {
     const count = Math.max(1, Number(shiftCountInput.value) || 1);
 
+    if (count > MAX_SHIFTS_PER_OFFICE) {
+      alert(`Հնարավոր չէ սահմանել ավելի քան ${MAX_SHIFTS_PER_OFFICE} հերթափոխ`);
+
+      setStatus(
+        `Հնարավոր չէ սահմանել ավելի քան ${MAX_SHIFTS_PER_OFFICE} հերթափոխ`,
+        true
+      );
+
+      return;
+    }
+
     const shifts = Array.from({ length: count }, (_, i) => {
       const input = document.getElementById(`shiftName-${i + 1}`);
 
@@ -139,6 +160,14 @@ shiftSetupForm.addEventListener('submit', async (event) => {
         sort_order: i + 1,
       };
     });
+
+    const hasEmptyShiftName = shifts.some((shift) => !shift.name);
+
+    if (hasEmptyShiftName) {
+      alert('Բոլոր հերթափոխերի անվանումները պարտադիր են');
+      setStatus('Բոլոր հերթափոխերի անվանումները պարտադիր են', true);
+      return;
+    }
 
     const response = await fetch('/api/shift-types/setup', {
       method: 'POST',
